@@ -1,141 +1,56 @@
-"use client";
+import Image from "next/image";
+import Link from "next/link";
+import Logo from "@/app/assets/logo.png";
 
-import { useState, ReactNode } from "react";
-import { Link, Button } from "@heroui/react";
-import { cn } from "@/app/lib/utils";
-interface NavbarItem {
-    label: string;
-    href: string;
-    isActive?: boolean;
-}
-interface NavbarProps {
-    brand: ReactNode;
-    items: NavbarItem[];
-    rightContent?: ReactNode;
-    className?: string;
-    maxWidth?: "sm" | "md" | "lg" | "xl" | "2xl" | "full";
-    position?: "static" | "sticky" | "fixed";
-}
-const maxWidthClasses = {
-    sm: "max-w-[640px]",
-    md: "max-w-[768px]",
-    lg: "max-w-[1024px]",
-    xl: "max-w-[1280px]",
-    "2xl": "max-w-[1536px]",
-    full: "max-w-full",
-};
-export function Navbar({
-    brand,
-    items,
-    rightContent,
-    className,
-    maxWidth = "lg",
-    position = "sticky",
-}: NavbarProps) {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+const links = <>
+    <Link href={"/"}>Home</Link>
+    <Link href={"/all-tiles"}>All Tiles</Link>
+    <Link href={"/my-profile"}>My Profile</Link>
+
+</>
+const Navbar = () => {
     return (
-        <nav
-            className={cn(
-                "z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg py-2",
-                position === "sticky" && "sticky top-0",
-                position === "fixed" && "fixed top-0",
-                className
-            )}
-        >
-            <header
-                className={cn(
-                    "flex h-16 items-center justify-between px-6",
-                    maxWidth !== "full" && maxWidthClasses[maxWidth],
-                    "mx-auto"
-                )}
-            >
-                <div className="flex items-center gap-4">
-                    <button
-                        className="md:hidden"
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        aria-label="Toggle menu"
-                        aria-expanded={isMenuOpen}
-                    >
-                        <span className="sr-only">Menu</span>
-                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            {isMenuOpen ? (
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            ) : (
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M4 6h16M4 12h16M4 18h16"
-                                />
-                            )}
-                        </svg>
-                    </button>
-                    {brand}
+        <nav className="bg-white shadow-sm text-[#091426]">
+            <div className="navbar  container mx-auto">
+                <div className="navbar-start">
+                    <div className="dropdown">
+                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+                        </div>
+                        <ul
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                            {links}
+                        </ul>
+                    </div>
+                    <Link href={"/"}>
+
+                        <Image
+                            src={Logo}
+                            alt="Logo"
+                            width={120}
+                            height={50}
+                            loading="eager"
+                            className="h-auto w-auto"
+                        />
+                    </Link>
                 </div>
-                <ul className="hidden items-center gap-4 md:flex">
-                    {items.map((item) => (
-                        <li key={item.href}>
-                            <Link
-                                href={item.href}
-                                className={cn(item.isActive && "font-medium text-accent")}
-                                aria-current={item.isActive ? "page" : undefined}
-                            >
-                                {item.label}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-                {rightContent && <div className="hidden items-center gap-4 md:flex">{rightContent}</div>}
-            </header>
-            {isMenuOpen && (
-                <div className="border-t border-separator md:hidden">
-                    <ul className="flex flex-col gap-2 p-4">
-                        {items.map((item) => (
-                            <li key={item.href}>
-                                <Link
-                                    href={item.href}
-                                    className={cn(
-                                        "block py-2",
-                                        item.isActive && "font-medium text-accent"
-                                    )}
-                                >
-                                    {item.label}
-                                </Link>
-                            </li>
-                        ))}
-                        {rightContent && (
-                            <li className="mt-4 flex flex-col gap-2 border-t border-separator pt-4">
-                                {rightContent}
-                            </li>
-                        )}
+                <div className="navbar-center hidden lg:flex">
+                    <ul className="menu menu-horizontal px-1 gap-5">
+                        {links}
                     </ul>
                 </div>
-            )}
+                <div className="navbar-end gap-5">
+                    <Link href={"/auth/signIn"}>
+                        <button className="btn btn-outline rounded-sm hover:bg-[#028C8D] hover:border-none">Login</button>
+                    </Link>
+                    <Link href={"/auth/resister"}>
+                        <button className="btn border bg-[#028C8D] rounded-sm hover: btn-outline hover:bg-transparent hover: outline-accent hover:text-black">Sign Up</button>
+                    </Link>
+                </div>
+            </div>
         </nav>
     );
-}
-// Usage
-<Navbar
-    brand={
-        <>
-            <p className="font-bold">ACME</p>
-        </>
-    }
-    items={[
-        { label: "Features", href: "#features" },
-        { label: "Dashboard", href: "#dashboard", isActive: true },
-        { label: "Pricing", href: "#pricing" },
-    ]}
-    rightContent={
-        <>
-            <Link href="#login">Login</Link>
-            <Button>Sign Up</Button>
-        </>
-    }
-/>
+};
 
+export default Navbar;
