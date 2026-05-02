@@ -1,10 +1,11 @@
-import React from 'react';
+import Feature from "../components/homepage/feature/Feature";
+
 
 const AllTiles = () => {
     return (
-        <div>
-            All tyles page
-        </div>
+        <section className="">
+            <Feature></Feature>
+        </section>
     );
 };
 
