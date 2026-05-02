@@ -1,8 +1,9 @@
+import { MarqueeComponent } from "@/app/utility/marque/Marque";
 import Image from "next/image";
 
 const HeroBanner = () => {
     return (
-        <div className="relative min-h-screen">
+        <div className="relative max-h-dvh">
 
             {/* Background Image */}
             <Image
@@ -19,14 +20,17 @@ const HeroBanner = () => {
             {/* Content */}
             <div className="relative flex items-center justify-center min-h-screen text-center text-white">
                 <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+                    <h1 className="mb-5 text-5xl font-bold">Discover Your Perfect Aesthetic</h1>
                     <p className="mb-5">
-                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                        quasi. In deleniti eaque aut repudiandae et a id nisi.
+                        Explore our curated collection of architectural surfaces, where craftsmanship meets contemporary design for the discerning professional.
                     </p>
-                    <button className="btn bg-brand-primari">Get Started</button>
+                    <div className=" space-x-4">
+                        <button className="btn bg-brand-primari">Explore All Tiles </button>
+                        <button className="btn btn-outline">Create Account </button>
+                    </div>
                 </div>
             </div>
+            <MarqueeComponent></MarqueeComponent>
 
         </div>
     );

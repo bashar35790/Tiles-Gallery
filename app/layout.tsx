@@ -27,8 +27,8 @@ export default function RootLayout({
       className={`${PlayfairFont.className} h-full antialiased`}
       data-theme="light"
     >
-      <body className="min-h-full flex flex-col">
-        <header className="fixed to-0% w-full z-10">
+      <body className="flex flex-col">
+        <header className="">
           <Navbar></Navbar>
         </header>
 

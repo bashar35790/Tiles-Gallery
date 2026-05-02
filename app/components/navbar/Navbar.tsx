@@ -12,7 +12,7 @@ const links = <>
 const Navbar = () => {
     return (
         <nav className="bg-white shadow-sm text-brand-secoundry">
-            <div className="navbar  container mx-auto">
+            <div className="navbar container mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
