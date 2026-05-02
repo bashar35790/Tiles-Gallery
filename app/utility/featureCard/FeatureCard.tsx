@@ -86,7 +86,7 @@ const FeatureCard = ({ card }: FeatureCardProps) => {
                 <div className="mt-auto">
                     <Link href={`/all-tiles/${card.id}`}>
                         <button
-                            className="w-full py-3.5 px-4 bg-brand-primari text-white rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-md group/btn"
+                            className="w-full py-3.5 px-4 bg-brand-primari text-white rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-md group/btn cursor-pointer"
 
                         >
                             Details
