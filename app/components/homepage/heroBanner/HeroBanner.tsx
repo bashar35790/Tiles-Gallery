@@ -20,7 +20,7 @@ const HeroBanner = () => {
             {/* Content */}
             <div className="relative flex items-center justify-center min-h-screen text-center text-white">
                 <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold">Discover Your Perfect Aesthetic</h1>
+                    <h1 className="mb-5 text-5xl font-bold">Discover Your Perfect <span className="text-brand-primari">Aesthetic</span></h1>
                     <p className="mb-5">
                         Explore our curated collection of architectural surfaces, where craftsmanship meets contemporary design for the discerning professional.
                     </p>
