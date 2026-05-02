@@ -1,12 +1,9 @@
-import { Button } from "@heroui/react";
+import HeroBanner from "./components/homepage/heroBanner/HeroBanner";
 
 export default function Home() {
   return (
     <div className="">
-      <h1 className="">Hellow</h1>
-      <Button>
-        My Button
-      </Button>
+      <HeroBanner></HeroBanner>
     </div>
   );
 }

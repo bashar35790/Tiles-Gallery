@@ -28,7 +28,7 @@ export default function RootLayout({
       data-theme="light"
     >
       <body className="min-h-full flex flex-col">
-        <header>
+        <header className="fixed to-0% w-full z-10">
           <Navbar></Navbar>
         </header>
 
