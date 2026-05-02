@@ -4,9 +4,9 @@ import Logo from "@/app/assets/logo.png";
 
 
 const links = <>
-    <Link href={"/"}>Home</Link>
-    <Link href={"/all-tiles"}>All Tiles</Link>
-    <Link href={"/my-profile"}>My Profile</Link>
+    <Link href={"/"} className=" uppercase hover:text-brand-primari">Home</Link>
+    <Link href={"/all-tiles"} className=" uppercase hover:text-brand-primari">All Tiles</Link>
+    <Link href={"/my-profile"} className=" uppercase hover:text-brand-primari">My Profile</Link>
 
 </>
 const Navbar = () => {
@@ -42,10 +42,10 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end gap-5">
                     <Link href={"/auth/signIn"}>
-                        <button className="btn btn-outline rounded-sm hover:bg-[#028C8D] hover:border-none">Login</button>
+                        <button className="btn btn-outline text-brand-primari rounded-sm hover:bg-brand-primari hover:border-none hover:text-white">Login</button>
                     </Link>
                     <Link href={"/auth/resister"}>
-                        <button className="btn border bg-[#028C8D] rounded-sm hover: btn-outline hover:bg-transparent hover: outline-accent hover:text-black">Sign Up</button>
+                        <button className="btn border bg-brand-primari text-white rounded-sm hover: btn-outline hover:bg-transparent hover: outline-accent hover:text-brand-primari">Sign Up</button>
                     </Link>
                 </div>
             </div>

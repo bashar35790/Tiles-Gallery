@@ -30,7 +30,7 @@ const featureData = async (): Promise<Tile[]> => {
 
 export default async function Feature() {
     const featureTiles = await featureData();
-    
+
     // Display a curated selection of up to 6 tiles on the homepage
     const displayTiles = featureTiles.slice(0, 6);
 
@@ -42,7 +42,7 @@ export default async function Feature() {
                         Curated Collection
                     </span>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-brand-secoundry">
-                        Featured Tiles
+                        Featured <span className="text-brand-primari italic">Tiles</span>
                     </h2>
                     <p className="text-slate-500 max-w-2xl text-lg mt-4">
                         Discover our most popular and stunning tile designs, carefully selected to elevate your next interior design project.
@@ -61,7 +61,7 @@ export default async function Feature() {
                         <p className="text-slate-400 mt-2">Please check back later.</p>
                     </div>
                 )}
-                
+
                 {featureTiles.length > 6 && (
                     <div className="mt-16 text-center">
                         <button className="px-8 py-4 bg-white border-2 border-brand-primari text-brand-primari hover:bg-brand-primari hover:text-white rounded-xl font-bold transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-1">

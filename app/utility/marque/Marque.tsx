@@ -10,12 +10,12 @@ export const MarqueeComponent = () => {
     return (
         <>
             <Marquee>
-                <div className="overflow-hidden border-y border-border bg-brand-primari text-brand-secoundry py-4">
+                <div className="overflow-hidden border-y border-border bg-brand-primari text-white py-4">
                     <div className="flex whitespace-nowrap">
                         {[...row, ...row].map((t, i) => (
-                            <span key={i} className="mx-8 inline-flex items-center gap-8 font-display text-lg">
+                            <span key={i} className="mx-8 inline-flex items-center gap-2 font-display text-lg">
+                                <span className="text-white">◆</span>
                                 {t}
-                                <span className="text-brand-secoundry">◆</span>
                             </span>
                         ))}
                     </div>
