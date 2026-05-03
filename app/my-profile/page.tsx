@@ -21,7 +21,7 @@ const Profile: React.FC<ProfileProps> = ({
     useEffect(() => {
         const loadSession = async () => {
             const { data } = await authClient.getSession();
-            setSession(data);
+            setSession(data?.user || null);
             setLoading(false);
         };
 
@@ -29,6 +29,16 @@ const Profile: React.FC<ProfileProps> = ({
     }, []);
 
     console.log(session);
+
+    // {
+    //     "name": "bashar",
+    //         "email": "bashar@gmail.com",
+    //             "emailVerified": false,
+    //                 "image": "https://scontent.fdac189-1.fna.fbcdn.net/v/t39.30808-1/633551356_896711972963782_2137755245972251401_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=109&ccb=1-7&_nc_sid=1d2534&_nc_eui2=AeHuK-mhFa6ljLKuUYMYDRGBteFrEDLv_Fy14WsQMu_8XHQ2deXStC4Hssv_BbCLvd6AerM-t2hGCDnrWf6TQt7_&_nc_ohc=f48lMkPZoRIQ7kNvwFHlj5v&_nc_oc=AdrAsI9eT5jC4oNcBrwVsZ8eaAbfrnbRyUNHWd9VCyAS7WH8WKqnqKilQSSvaZ69GQE&_nc_zt=24&_nc_ht=scontent.fdac189-1.fna&_nc_gid=bFGu1miJNGkSGDSH2vgFbg&_nc_ss=7b2a8&oh=00_Af4F6YgbdO_0bNFZ9nwah6lFdVJXql2hCJa7nhRH551fpw&oe=69FD116F",
+    //                     "createdAt": "2026-05-03T14:09:25.160Z",
+    //                         "updatedAt": "2026-05-03T14:09:25.160Z",
+    //                             "id": "69f757157035a27ea682f9f0"
+    // }
 
     return (
         <main className="pt-20 pb-20 container mx-auto">
@@ -40,7 +50,7 @@ const Profile: React.FC<ProfileProps> = ({
                     {/* Avatar */}
                     <div className="relative h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-lg border-4 border-white">
                         <Image
-                            src={avatar}
+                            src={session?.image || avatar}
                             alt="Profile image"
                             fill
                             className="object-cover"
@@ -53,8 +63,8 @@ const Profile: React.FC<ProfileProps> = ({
                         <p className="text-2xl uppercase font-light tracking-widest text-brand-secoundry">
                             Professional Member
                         </p>
-                        <h1 className="text-4xl font-bold text-brand-primari">{name}</h1>
-                        <p className="text-gray-600">{email}</p>
+                        <h1 className="text-4xl font-bold text-brand-primari uppercase">{session?.name || name}</h1>
+                        <p className="text-gray-600">{session?.email || email}</p>
                     </div>
                 </div>
 
@@ -66,17 +76,17 @@ const Profile: React.FC<ProfileProps> = ({
             {/* Stats */}
             <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
 
-                <div className="p-6 border rounded-lg bg-gray-50">
+                <div className="p-6 border rounded-lg bg-gray-50 border-brand-primari">
                     <h3 className="text-sm uppercase text-gray-500">Saved Tiles</h3>
                     <p className="text-3xl font-bold text-brand-primari">24 Designs</p>
                 </div>
 
-                <div className="p-6 border rounded-lg bg-gray-50">
+                <div className="p-6 border rounded-lg bg-gray-50 border-brand-primari">
                     <h3 className="text-sm uppercase text-gray-500">Active Projects</h3>
                     <p className="text-3xl font-bold text-brand-primari">08 Sets</p>
                 </div>
 
-                <div className="p-6 border rounded-lg bg-gray-50">
+                <div className="p-6 border rounded-lg bg-gray-50 border-brand-primari">
                     <h3 className="text-sm uppercase text-gray-500">Samples Ordered</h3>
                     <p className="text-3xl font-bold text-brand-primari">12 Items</p>
                 </div>
@@ -90,7 +100,7 @@ const Profile: React.FC<ProfileProps> = ({
                     Account Settings
                 </h2>
 
-                <form className="space-y-8 bg-white p-8 border rounded-lg shadow-sm">
+                <form className="space-y-8 bg-white p-8 border rounded-lg shadow-sm border-brand-primari">
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
@@ -100,7 +110,7 @@ const Profile: React.FC<ProfileProps> = ({
                             </label>
                             <input
                                 type="text"
-                                defaultValue={name}
+                                defaultValue={session?.name || name}
                                 className="border-b py-2 focus:outline-none"
                             />
                         </div>
@@ -111,7 +121,7 @@ const Profile: React.FC<ProfileProps> = ({
                             </label>
                             <input
                                 type="email"
-                                defaultValue={email}
+                                defaultValue={session?.email || email}
                                 disabled
                                 className="border-b py-2 bg-gray-100 cursor-not-allowed"
                             />
@@ -126,6 +136,7 @@ const Profile: React.FC<ProfileProps> = ({
                         <input
                             type="url"
                             placeholder="https://example.com/avatar.jpg"
+                            defaultValue={session?.image}
                             className="border-b py-2 focus:outline-none"
                         />
                     </div>
@@ -136,7 +147,7 @@ const Profile: React.FC<ProfileProps> = ({
                         </label>
                         <input
                             type="text"
-                            defaultValue="Thorne & Co. Architectural Studio"
+                            defaultValue={session?.studio || "Thorne & Co. Architectural Studio"}
                             className="border-b py-2 focus:outline-none"
                         />
                     </div>

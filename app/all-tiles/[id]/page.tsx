@@ -26,7 +26,7 @@ async function fetchSingleData(id: string) {
 export default async function DetailsPage({ params }: PageProps) {
     const resolvedParams = await params;
     const { id } = resolvedParams;
-    
+
     const tile = await fetchSingleData(String(id));
 
     if (!tile) {
@@ -46,11 +46,11 @@ export default async function DetailsPage({ params }: PageProps) {
     return (
         <section className="bg-white min-h-screen pt-24 pb-16 lg:pt-32 lg:pb-24">
             <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
-                
+
                 {/* Back Navigation */}
                 <div className="mb-8">
-                    <Link 
-                        href="/all-tiles" 
+                    <Link
+                        href="/all-tiles"
                         className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-brand-primari transition-colors group"
                     >
                         <svg className="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -61,7 +61,7 @@ export default async function DetailsPage({ params }: PageProps) {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-                    
+
                     {/* Left Column: Image Section */}
                     <div className="relative w-full aspect-square md:aspect-[4/3] lg:aspect-square group overflow-hidden rounded-2xl shadow-2xl shadow-brand-secoundry/10 bg-gray-100">
                         {tile.image ? (
@@ -84,7 +84,7 @@ export default async function DetailsPage({ params }: PageProps) {
 
                     {/* Right Column: Product Info */}
                     <div className="flex flex-col space-y-8">
-                        
+
                         {/* Header: Badges & Title */}
                         <div className="space-y-4">
                             <div className="flex flex-wrap items-center gap-3">
@@ -100,11 +100,11 @@ export default async function DetailsPage({ params }: PageProps) {
                                     </span>
                                 )}
                             </div>
-                            
+
                             <h1 className="text-4xl lg:text-5xl font-extrabold text-brand-secoundry tracking-tight leading-tight">
                                 {tile.title}
                             </h1>
-                            
+
                             {tile.price && (
                                 <div className="flex items-baseline gap-2">
                                     <span className="text-3xl font-bold text-brand-primari">
@@ -149,7 +149,7 @@ export default async function DetailsPage({ params }: PageProps) {
                                 <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">Style Tags</h3>
                                 <div className="flex flex-wrap gap-2">
                                     {tile.tags.map((tag: string, index: number) => (
-                                        <span 
+                                        <span
                                             key={index}
                                             className="px-4 py-2 bg-white border border-gray-200 text-gray-600 text-sm rounded-full shadow-sm hover:border-brand-primari hover:text-brand-primari transition-colors cursor-default"
                                         >
@@ -160,15 +160,6 @@ export default async function DetailsPage({ params }: PageProps) {
                             </div>
                         )}
 
-                        {/* Actions */}
-                        <div className="pt-6 flex flex-col sm:flex-row gap-4">
-                            <button className="flex-1 bg-brand-secoundry text-white py-4 px-8 rounded-xl font-semibold text-lg hover:bg-brand-primari shadow-lg shadow-brand-secoundry/20 transition-all duration-300 transform hover:-translate-y-1">
-                                Add to Cart
-                            </button>
-                            <button className="flex-1 bg-white text-brand-secoundry border-2 border-brand-secoundry py-4 px-8 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-all duration-300">
-                                Request Sample
-                            </button>
-                        </div>
 
                     </div>
                 </div>
