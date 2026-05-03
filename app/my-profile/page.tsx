@@ -16,7 +16,7 @@ const Profile: React.FC<ProfileProps> = ({
     Email = "julian.thorne@architect-studio.com",
     avatar = "https://lh3.googleusercontent.com/aida-public/AB6AXuCrvEMJ7eU7Jsl-0qXqM-vNir-Xp96taqtWm4deKT6ikOhZzyMXWH7ojjWefHRaPhqT7Q6fIiGkj2a_TUS111hL4xKqN4DjvAb4j0zNlLwlvfrwO2XiPi7lldX5QKDomq82VZ63JdTkQ6ZzX2aJdcM2x-CzTesCH4RjgPgew3Smt4oF_d5sYywzzYwJ9OTLn06I8S9Fp1Nc5KVpibcTwBebwgIXXmA46s0w7-r6ItrtKlCTSP1P_eUw2Z2NTuXXVahaA9S3gMcPr4Q", }) => {
     const [loading, setLoading] = useState(true);
-    const [session, setSession] = useState<unknown>(null);
+    const [session, setSession] = useState<any>(null);
 
     useEffect(() => {
         const loadSession = async () => {
