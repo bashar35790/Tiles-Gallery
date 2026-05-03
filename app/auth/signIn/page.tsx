@@ -133,7 +133,7 @@ const Login = () => {
                         <Button
                             type="submit"
                             className="bg-brand-secoundry text-white"
-                            disabled={loading}
+                            isDisabled={loading}
                         >
                             <Check />
                             {loading ? "Signing in..." : "Submit"}
@@ -142,7 +142,7 @@ const Login = () => {
                         <Button
                             type="reset"
                             variant="secondary"
-                            disabled={loading}
+                            isDisabled={loading}
                         >
                             Reset
                         </Button>
