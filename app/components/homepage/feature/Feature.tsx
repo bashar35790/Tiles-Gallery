@@ -1,4 +1,4 @@
-import FeatureCard from "@/app/utility/featureCard/FeatureCard";
+import FeatureCard from "@/utility/featureCard/FeatureCard";
 
 type Tile = {
     id: string;

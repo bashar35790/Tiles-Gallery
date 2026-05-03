@@ -1,14 +1,14 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import React, { useState } from "react";
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const [value, setValue] = React.useState("heroui.com");
 
 
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const data: Record<string, string> = {};
@@ -16,7 +16,20 @@ const SignUp = () => {
         formData.forEach((value, key) => {
             data[key] = value.toString();
         });
-        alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
+        
+        const { data: respon, error } = await authClient.signUp.email({
+            name: data.name, // required
+            email: data.email, // required
+            password: data.password, // required
+            image: data.Image, // required
+            callbackURL: "/",
+        });
+
+        if (error) {
+            alert(`Error: ${error.message}`);
+        } else {
+            alert(`Success: ${JSON.stringify(respon, null, 2)}`);
+        }
     };
 
     const inputStyles =
@@ -64,16 +77,20 @@ const SignUp = () => {
                             />
                             <FieldError />
                         </TextField>
-                        <div className="flex flex-col gap-2">
-                            <Input
-                                aria-label="Domain"
-                                placeholder="domain"
-                                value={value}
-                                onChange={(event) => setValue(event.target.value)}
-                                className={inputStyles}
-                            />
-                            <span className="px-1 text-sm text-brand-secoundry/70">https://{value || "your-domain"}</span>
-                        </div>
+                        <TextField
+                            isRequired
+                            name="Image"
+                            validate={(value) => {
+                                if (value.length < 3) {
+                                    return "Name must be at least 3 characters";
+                                }
+                                return null;
+                            }}
+                        >
+                            <Label>Image</Label>
+                            <Input placeholder="Enter Image URL" className={inputStyles} />
+                            <FieldError />
+                        </TextField>
                         <TextField
                             isRequired
                             minLength={8}

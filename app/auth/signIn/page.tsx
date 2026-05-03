@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 
@@ -6,7 +7,7 @@ const inputStyles =
     "border border-gray-300 focus-within:border-brand-secoundry focus-within:ring-1 focus-within:ring-brand-secoundry focus:outline-none w-full";
 
 const Login = () => {
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const data: Record<string, string> = {};
@@ -14,7 +15,21 @@ const Login = () => {
         formData.forEach((value, key) => {
             data[key] = value.toString();
         });
-        alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
+
+        const { data: response, error } = await authClient.signIn.email({
+            email: data.email, // required
+            password: data.password, // required
+            rememberMe: true,
+            callbackURL: "/",
+        });
+        try {
+            if (error) {
+                throw new Error(error.message);
+            }
+            alert(`Sign-in successful: ${JSON.stringify(response, null, 2)}`);
+        } catch (err) {
+            alert(`Sign-in failed: ${(err as Error).message}`);
+        }
     };
     return (
         <>

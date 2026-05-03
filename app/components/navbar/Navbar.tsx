@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/app/assets/logo.png";
+import Logo from "@/assets/logo.png";
 
 
 const links = <>

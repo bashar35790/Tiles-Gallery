@@ -1,4 +1,4 @@
-import { MarqueeComponent } from "@/app/utility/marque/Marque";
+import { MarqueeComponent } from "@/utility/marque/Marque";
 import Image from "next/image";
 import Link from "next/link";
 
