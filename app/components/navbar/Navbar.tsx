@@ -1,6 +1,11 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/assets/logo.png";
+import { authClient } from "@/lib/auth-client";
+import { useEffect, useState } from "react";
+
 
 
 const links = <>
@@ -10,6 +15,19 @@ const links = <>
 
 </>
 const Navbar = () => {
+    const [loading, setLoading] = useState(true);
+    const [session, setSession] = useState<any>(null);
+
+    useEffect(() => {
+        const loadSession = async () => {
+            const { data } = await authClient.getSession();
+            setSession(data?.user ?? null);
+            setLoading(false);
+        };
+
+        loadSession();
+    }, []);
+    console.log(session);
     return (
         <nav className="bg-white shadow-sm text-brand-secoundry">
             <div className="navbar container mx-auto">
@@ -41,12 +59,42 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-5">
-                    <Link href={"/auth/signIn"}>
-                        <button className="btn btn-outline text-brand-primari rounded-sm hover:bg-brand-primari hover:border-none hover:text-white">Login</button>
-                    </Link>
-                    <Link href={"/auth/resister"}>
-                        <button className="btn border bg-brand-primari text-white rounded-sm hover: btn-outline hover:bg-transparent hover: outline-accent hover:text-brand-primari">Sign Up</button>
-                    </Link>
+                    {/* Avatar */}
+                    {
+                        session ? (
+                            <div className="flex justify-end items-center gap-4 flex-row-reverse">
+                                <div className="relative h-12 w-12 rounded-full overflow-hidden shadow-lg border-4 border-white">
+                                    <Image
+                                        src={session?.image || "https://lh3.googleusercontent.com/aida-public/AB6AXuCrvEMJ7eU7Jsl-0qXqM-vNir-Xp96taqtWm4deKT6ikOhZzyMXWH7ojjWefHRaPhqT7Q6fIiGkj2a_TUS111hL4xKqN4DjvAb4j0zNlLwlvfrwO2XiPi7lldX5QKDomq82VZ63JdTkQ6ZzX2aJdcM2x-CzTesCH4RjgPgew3Smt4oF_d5sYywzzYwJ9OTLn06I8S9Fp1Nc5KVpibcTwBebwgIXXmA46s0w7-r6ItrtKlCTSP1P_eUw2Z2NTuXXVahaA9S3gMcPr4Q"}
+                                        alt="Profile image"
+                                        fill
+                                        className="object-cover"
+                                        priority
+                                        sizes="(max-width: 768px) 128px, (max-width: 1024px) 160px, 256px"
+                                    />
+                                </div>
+
+                                <button className="btn btn-outline text-brand-primari rounded-sm hover:bg-brand-primari hover:border-none hover:text-white"
+                                    onClick={async () => {
+                                        await authClient.signOut();
+                                        setSession(null);
+                                    }}
+                                >Log Out</button>
+
+                            </div>
+
+                        ) : (
+                            <div className="flex gap-4">
+                                <Link href={"/auth/signIn"}>
+                                    <button className="btn btn-outline text-brand-primari rounded-sm hover:bg-brand-primari hover:border-none hover:text-white">Login</button>
+                                </Link>
+                                <Link href={"/auth/resister"}>
+                                    <button className="btn border bg-brand-primari text-white rounded-sm hover: btn-outline hover:bg-transparent hover: outline-accent hover:text-brand-primari">Sign Up</button>
+                                </Link>
+                            </div>
+                        )
+                    }
+
                 </div>
             </div>
         </nav>
