@@ -2,10 +2,12 @@
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const SignUp = () => {
-    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const router = useRouter();
 
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -16,7 +18,7 @@ const SignUp = () => {
         formData.forEach((value, key) => {
             data[key] = value.toString();
         });
-        
+
         const { data: respon, error } = await authClient.signUp.email({
             name: data.name, // required
             email: data.email, // required
@@ -28,7 +30,7 @@ const SignUp = () => {
         if (error) {
             alert(`Error: ${error.message}`);
         } else {
-            alert(`Success: ${JSON.stringify(respon, null, 2)}`);
+            router.push("/");
         }
     };
 
