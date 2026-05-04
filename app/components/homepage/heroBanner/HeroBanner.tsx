@@ -12,7 +12,7 @@ import 'swiper/css/effect-fade';
 
 const images = [
     "https://i.ibb.co/qFgk792p/3d-rendering-modern-black-bathroom-with-luxury-tile-decor.jpg",
-    "https://images.unsplash.com/photo-1600585154340-be6199f73315?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop"
 ];
 
@@ -52,16 +52,16 @@ const HeroBanner = () => {
             <div className="absolute inset-0 z-20 flex items-center justify-center text-center text-white px-4">
                 <div className="max-w-4xl mx-auto space-y-8">
                     <div className="space-y-4">
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.1]">
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.1] animate__animated animate__slideInDown animate__slow">
                             Discover Your Perfect <br />
                             <span className="text-brand-primari italic drop-shadow-sm">Aesthetic</span>
                         </h1>
-                        <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/80 font-medium leading-relaxed">
+                        <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/80 font-medium leading-relaxed animate__animated animate__fadeIn animate__delay-1s animate__slow">
                             Explore our curated collection of architectural surfaces, where craftsmanship meets contemporary design for the discerning professional.
                         </p>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row justify-center items-center gap-5 pt-4">
+                    <div className="flex flex-col sm:flex-row justify-center items-center gap-5 pt-4 animate__animated animate__slideInUp animate__delay-1s animate__slow">
                         <Link href={"/all-tiles"}>
                             <button className="group relative px-10 py-5 bg-brand-primari text-white rounded-2xl font-bold uppercase tracking-widest overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(2,140,141,0.4)] active:scale-95">
                                 <span className="relative z-10">Explore All Tiles</span>

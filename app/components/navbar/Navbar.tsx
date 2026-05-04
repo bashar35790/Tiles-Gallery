@@ -44,6 +44,7 @@ const Navbar = () => {
                             height={40}
                             loading="eager"
                             className="h-8 md:h-10 w-auto object-contain"
+                            style={{ width: 'auto' }}
                         />
                     </Link>
                 </div>
