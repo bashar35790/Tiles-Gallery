@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
-import { Playfair_Display } from "next/font/google";
+import { Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/homepage/footer/Footer";
 
-
-const PlayfairFont = Playfair_Display({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const playfair = Playfair_Display({
+    subsets: ["latin"],
+    variable: "--font-playfair",
 });
+
+const dmSans = DM_Sans({
+    subsets: ["latin"],
+    variable: "--font-dm-sans",
+});
+
 
 
 
@@ -25,7 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${PlayfairFont.className} h-full antialiased`}
+      className={`${playfair.variable} ${dmSans.variable} h-full antialiased font-sans`}
       data-theme="light"
     >
       <body className="flex flex-col">

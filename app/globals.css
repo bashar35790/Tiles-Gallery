@@ -6,4 +6,19 @@
 @theme {
     --color-brand-primari: #028C8D;
     --color-brand-secoundry: #091426;
+    --font-playfair: var(--font-playfair);
+    --font-sans: var(--font-dm-sans);
 }
+
+
+@layer base {
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-playfair), serif;
+    }
+
+    body {
+        font-family: var(--font-sans), sans-serif;
+    }
+
+}
+
