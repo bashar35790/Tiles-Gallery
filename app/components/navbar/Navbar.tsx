@@ -2,25 +2,26 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/assets/logo.png";
 import { authClient } from "@/lib/auth-client";
 import { usePathname, useRouter } from "next/navigation";
-
-const links = <>
-    <Link href={"/"} className="uppercase hover:text-brand-primari transition-colors">Home</Link>
-    <Link href={"/all-tiles"} className="uppercase hover:text-brand-primari transition-colors">All Tiles</Link>
-    <Link href={"/my-profile"} className="uppercase hover:text-brand-primari transition-colors">My Profile</Link>
-</>
 
 const Navbar = () => {
     const { data: session, isPending } = authClient.useSession();
     const router = useRouter();
     const pathname = usePathname();
 
+    const links = <>
+        <Link href={"/"} className={`${pathname === "/" ? "text-brand-primari font-semibold border-b-2 border-brand-primari" : "hover:text-brand-primari transition-colors"} uppercase`}>Home</Link>
+        <Link href={"/all-tiles"} className={`${pathname === "/all-tiles" ? "text-brand-primari font-semibold border-b-2 border-brand-primari" : "hover:text-brand-primari transition-colors"} uppercase`}>All Tiles</Link>
+        <Link href={"/my-profile"} className={`${pathname === "/my-profile" ? "text-brand-primari font-semibold border-b-2 border-brand-primari" : "hover:text-brand-primari transition-colors"} uppercase`}>My Profile</Link>
+    </>
+
     const handleLogout = async () => {
         await authClient.signOut();
         router.refresh();
     };
+
+    console.log(pathname);
 
     return (
         <nav className="bg-white shadow-sm text-brand-secoundry sticky top-0 z-50">
@@ -37,15 +38,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link href={"/"} className="flex items-center">
-                        <Image
-                            src={Logo}
-                            alt="Logo"
-                            width={120}
-                            height={40}
-                            loading="eager"
-                            className="h-8 md:h-10 w-auto object-contain"
-                            style={{ width: 'auto' }}
-                        />
+                        <h1 className="text-2xl font-bold text-brand-primari">Tiles <span className="text-brand-secoundry">Gallery</span></h1>
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -68,7 +61,7 @@ const Navbar = () => {
                                 />
                             </Link>
 
-                            <button 
+                            <button
                                 className="btn btn-sm md:btn-md btn-outline text-brand-primari rounded-lg hover:bg-brand-primari hover:border-brand-primari hover:text-white transition-all text-xs md:text-sm"
                                 onClick={handleLogout}
                             >
