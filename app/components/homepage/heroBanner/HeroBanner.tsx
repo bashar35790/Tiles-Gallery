@@ -29,7 +29,9 @@ const HeroBanner = () => {
                         <Link href={"/all-tiles"}>
                             <button className="btn bg-brand-primari uppercase text-white">Explore All Tiles </button>
                         </Link>
-                        <button className="btn btn-outline">Create Account </button>
+                        <Link href={"/auth/resister"}>
+                            <button className="btn btn-outline">Create Account </button>
+                        </Link>
                     </div>
                 </div>
             </div>

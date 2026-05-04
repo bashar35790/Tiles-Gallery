@@ -1,3 +1,4 @@
+
 import FeatureCard from "../utility/featureCard/FeatureCard";
 
 type Tile = {
@@ -28,7 +29,6 @@ const featureData = async (): Promise<Tile[]> => {
     }
 };
 
-
 const AllTiles = async () => {
     const featureTiles = await featureData();
 
@@ -38,16 +38,30 @@ const AllTiles = async () => {
     return (
         <section className="py-24 bg-slate-50/50">
             <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
-                <div className="flex flex-col items-center text-center mb-16 space-y-4">
-                    <span className="text-brand-primari font-bold tracking-widest uppercase text-sm bg-brand-primari/10 px-4 py-1.5 rounded-full">
-                        Curated Collection
-                    </span>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-brand-secoundry">
-                        Featured <span className="text-brand-primari italic">Tiles</span>
-                    </h2>
-                    <p className="text-slate-500 max-w-2xl text-lg mt-4">
-                        Discover our most popular and stunning tile designs, carefully selected to elevate your next interior design project.
-                    </p>
+                <div className="flex justify-between items-end text-center mb-16 space-y-4">
+                    <div className=" text-left flex flex-col gap-2">
+                        <span className="text-brand-primari w-fit font-bold tracking-widest uppercase text-sm bg-brand-primari/10 px-4 py-1.5 rounded-full">
+                            Curated Collection
+                        </span>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-brand-secoundry">
+                            Featured <span className="text-brand-primari italic">Tiles</span>
+                        </h2>
+                        <p className="text-slate-500 max-w-sm text-lg mt-4">
+                            Discover our most popular and stunning tile designs, carefully selected to elevate your next interior design project.
+                        </p>
+                        {/* filter buttons */}
+                        <div className="flex gap-2">
+                            <button className="btn bg-brand-primari/70 hover:bg-brand-secoundry text-white">ALL SURFACES</button>
+                            <button className="btn bg-brand-primari/70 hover:bg-brand-secoundry text-white">MARBLE</button>
+                            <button className="btn bg-brand-primari/70 hover:bg-brand-secoundry text-white">CERAMIC</button>
+                            <button className="btn bg-brand-primari/70 hover:bg-brand-secoundry text-white">TERRAZZO</button>
+                            <button className="btn bg-brand-primari/70 hover:bg-brand-secoundry text-white">CONCRETE</button>
+
+                        </div>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Search tiles..." className="input input-bordered w-full min-w-md" />
+                    </div>
                 </div>
 
                 {displayTiles.length > 0 ? (

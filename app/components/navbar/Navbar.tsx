@@ -5,6 +5,7 @@ import Link from "next/link";
 import Logo from "@/assets/logo.png";
 import { authClient } from "@/lib/auth-client";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 
 
@@ -15,19 +16,17 @@ const links = <>
 
 </>
 const Navbar = () => {
-    const [loading, setLoading] = useState(true);
     const [session, setSession] = useState<any>(null);
+    const pathname = usePathname()
 
     useEffect(() => {
         const loadSession = async () => {
             const { data } = await authClient.getSession();
             setSession(data?.user ?? null);
-            setLoading(false);
         };
 
         loadSession();
     }, []);
-    console.log(session);
     return (
         <nav className="bg-white shadow-sm text-brand-secoundry">
             <div className="navbar container mx-auto">
