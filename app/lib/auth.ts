@@ -6,12 +6,14 @@ const client = new MongoClient(process.env.DATABASE_URI!);
 const db = client.db("tiles-gallery");
 
 export const auth = betterAuth({
-  emailAndPassword: {
-    enabled: true,
-  },
   database: mongodbAdapter(db, {
     client,
   }),
+  emailAndPassword: {
+    enabled: true,
+  },
+  baseURL: process.env.BETTER_AUTH_URL,
+  secret: process.env.BETTER_AUTH_SECRET,
 });
 
 
