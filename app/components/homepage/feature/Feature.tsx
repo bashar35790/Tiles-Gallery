@@ -16,7 +16,9 @@ type Tile = {
 
 const featureData = async (): Promise<Tile[]> => {
     try {
-        const res = await fetch("https://tiles-gallery-db-server.onrender.com/tiles");
+        const res = await fetch("https://tiles-gallery-db-server.onrender.com/tiles", {
+            next: { revalidate: 3600 } // Cache for 1 hour
+        });
         if (!res.ok) {
             throw new Error(`Failed to fetch: ${res.status}`);
         }

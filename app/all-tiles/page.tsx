@@ -57,8 +57,6 @@ const AllTiles = async ({
 
     // Display a curated selection or all if filtered?
     // Usually, if searching/filtering, we want to see all results.
-    // If no search/filter, maybe show 6? 
-    // But this page seems to be "All Tiles", so maybe show all filtered results.
     const displayTiles = filteredTiles;
 
     return (
@@ -74,7 +72,7 @@ const AllTiles = async ({
                     </div>
                 ) : (
                     <div className="text-center py-20 bg-white rounded-3xl shadow-sm border border-slate-100">
-                        <p className="text-xl text-slate-500 font-medium">No tiles found matching your criteria.</p>
+                        <p className="text-xl text-brand-primari font-medium">No tiles found matching your criteria.</p>
                         <p className="text-slate-400 mt-2">Try adjusting your search or filters.</p>
                     </div>
                 )}

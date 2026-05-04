@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const FilterSection = () => {
     const router = useRouter();
@@ -12,15 +12,17 @@ const FilterSection = () => {
     const currentSearch = searchParams.get("search") || "";
 
     const [searchInput, setSearchInput] = useState(currentSearch);
+    const [prevSearch, setPrevSearch] = useState(currentSearch);
 
-    // Sync input with URL search param
-    useEffect(() => {
+    if (currentSearch !== prevSearch) {
         setSearchInput(currentSearch);
-    }, [currentSearch]);
+        setPrevSearch(currentSearch);
+    }
+
 
     const updateQueryParams = (updates: Record<string, string | null>) => {
         const params = new URLSearchParams(searchParams.toString());
-        
+
         Object.entries(updates).forEach(([key, value]) => {
             if (value === null || value === "all") {
                 params.delete(key);
@@ -78,11 +80,10 @@ const FilterSection = () => {
                         <button
                             key={cat.value}
                             onClick={() => handleCategoryClick(cat.value)}
-                            className={`btn px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                                currentCategory === cat.value
+                            className={`btn px-4 py-2 rounded-lg font-medium transition-all duration-200 ${currentCategory === cat.value
                                     ? "bg-brand-secoundry text-white shadow-lg"
                                     : "bg-brand-primari/10 text-brand-primari hover:bg-brand-primari/20"
-                            }`}
+                                }`}
                         >
                             {cat.label}
                         </button>
