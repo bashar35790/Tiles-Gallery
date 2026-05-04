@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "development") {
   }
   // Wait for connection to ensure client is ready, but in this sync context
   // we just use the instance. The connect() promise will resolve in background.
-  client = new MongoClient(process.env.DATABASE_URI!); 
+  client = new MongoClient(process.env.DATABASE_URI!);
 } else {
   client = new MongoClient(process.env.DATABASE_URI!);
 }
@@ -29,6 +29,16 @@ export const auth = betterAuth({
   }),
   emailAndPassword: {
     enabled: true,
+  },
+  socialProviders: {
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    },
+    github: {
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+    },
   },
   baseURL: process.env.BETTER_AUTH_URL,
   secret: process.env.BETTER_AUTH_SECRET,

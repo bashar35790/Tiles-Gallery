@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
+import SocialLogin from "@/utility/thirdPartyLogin/ThirdPartyLogin";
 import {
     Button,
     Description,
@@ -148,7 +149,10 @@ const Login = () => {
                             Reset
                         </Button>
                     </div>
+
                 </form>
+
+                <SocialLogin />
             </div>
         </div>
     );

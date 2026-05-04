@@ -63,13 +63,13 @@ const HeroBanner = () => {
 
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-5 pt-4 animate__animated animate__slideInUp animate__delay-1s animate__slow">
                         <Link href={"/all-tiles"}>
-                            <button className="group relative px-10 py-5 bg-brand-primari text-white rounded-2xl font-bold uppercase tracking-widest overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(2,140,141,0.4)] active:scale-95">
+                            <button className="group cursor-pointer relative px-10 py-5 bg-brand-primari text-white rounded-2xl font-bold uppercase tracking-widest overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(2,140,141,0.4)] active:scale-95">
                                 <span className="relative z-10">Explore All Tiles</span>
                                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                             </button>
                         </Link>
                         <Link href={"/auth/resister"}>
-                            <button className="px-10 py-5 border-2 border-white/30 text-white rounded-2xl font-bold uppercase tracking-widest hover:bg-white hover:text-brand-secoundry hover:border-white transition-all active:scale-95">
+                            <button className="px-10 cursor-pointer py-5 border-2 border-white/30 text-white rounded-2xl font-bold uppercase tracking-widest hover:bg-white hover:text-brand-secoundry hover:border-white transition-all active:scale-95">
                                 Create Account
                             </button>
                         </Link>

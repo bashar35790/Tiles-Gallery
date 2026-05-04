@@ -21,8 +21,6 @@ const Navbar = () => {
         router.refresh();
     };
 
-    console.log(pathname);
-
     return (
         <nav className="bg-white shadow-sm text-brand-secoundry sticky top-0 z-50">
             <div className="navbar container mx-auto px-4 md:px-6">
