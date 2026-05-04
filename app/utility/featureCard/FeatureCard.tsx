@@ -21,7 +21,6 @@ type FeatureCardProps = {
 
 const FeatureCard = ({ card }: FeatureCardProps) => {
     // Use an external image proxy (weserv.nl) to resize massive 20MB+ images on the fly.
-    // This prevents Next.js image optimization from timing out/OOMing and throwing 500 errors.
     const proxyImageUrl = `https://wsrv.nl/?url=${encodeURIComponent(card.image)}&w=800&q=80&output=webp`;
 
     return (
