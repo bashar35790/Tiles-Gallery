@@ -16,9 +16,6 @@ const dmSans = DM_Sans({
   variable: "--font-dm-sans",
 });
 
-
-
-
 export const metadata: Metadata = {
   title: "Tiles Gallery",
   description: "Tiles Gallery is primium tiles shop",
