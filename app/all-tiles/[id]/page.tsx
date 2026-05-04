@@ -34,7 +34,7 @@ export default async function DetailsPage({ params }: PageProps) {
             <div className="min-h-screen flex items-center justify-center bg-gray-50">
                 <div className="text-center space-y-4">
                     <h2 className="text-2xl font-bold text-brand-secoundry">Tile Not Found</h2>
-                    <p className="text-gray-500">We couldn't find the tile you're looking for.</p>
+                    <p className="text-gray-500">We couldn&apos;t find the tile you&apos;re looking for.</p>
                     <Link href="/all-tiles" className="inline-block px-6 py-2 bg-brand-primari text-white rounded-full hover:bg-opacity-90 transition-all">
                         Back to Gallery
                     </Link>
