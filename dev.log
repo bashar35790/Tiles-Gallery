@@ -1,0 +1,18 @@
+
+> tiles-gallery@0.1.0 dev
+> next dev -p 3001
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://192.168.0.105:3001
+- Environments: .env
+✓ Ready in 461ms
+⨯ Another next dev server is already running.
+
+- Local:        http://localhost:3000
+- PID:          7328
+- Dir:          /home/bashar/programing-hero-level-1/tiles-gallery
+- Log:          .next/dev/logs/next-development.log
+
+Run kill 7328 to stop it.
+[?25h
