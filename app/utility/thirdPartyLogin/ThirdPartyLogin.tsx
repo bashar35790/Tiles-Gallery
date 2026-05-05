@@ -3,7 +3,7 @@ import { authClient } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 
-export default function SocialLogin() {
+export default function SocialLogin({ google, github }: { google: string, github: string }) {
     const handleLogin = async () => {
         const data = await authClient.signIn.social({
             provider: "google",
@@ -26,11 +26,11 @@ export default function SocialLogin() {
         <div className="flex w-full flex-col gap-3">
             <Button className="w-full" variant="tertiary" onClick={handleLogin}>
                 <Icon icon="devicon:google" />
-                Sign in with Google
+                {google}
             </Button>
             <Button className="w-full" variant="tertiary" onClick={handleGithubLogin}>
                 <Icon icon="mdi:github" />
-                Sign in with GitHub
+                {github}
             </Button>
         </div>
     );

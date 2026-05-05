@@ -1,6 +1,6 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
-import SocialLogin from "@/utility/thirdPartyLogin/ThirdPartyLogin";
+import SocialSignUp from "@/utility/thirdPartyLogin/ThardPartySignUp";
 import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import Link from "next/link";
@@ -15,7 +15,7 @@ const SignUp = () => {
 
     useEffect(() => {
         if (session) {
-            router.push("/my-profile");
+            router.push("/");
         }
     }, [session, router]);
 
@@ -35,7 +35,7 @@ const SignUp = () => {
             email: data.email,
             password: data.password,
             image: data.Image,
-            callbackURL: "/my-profile",
+            callbackURL: "/",
         });
 
         if (error) {
@@ -43,7 +43,7 @@ const SignUp = () => {
             setLoading(false);
         } else {
             router.refresh();
-            router.push("/my-profile");
+            router.push("/");
         }
     };
 
@@ -57,7 +57,7 @@ const SignUp = () => {
         <div className="py-12 md:py-16 mx-auto px-4">
             <div className="bg-brand-primari p-6 md:p-10 rounded-2xl max-w-2xl mx-auto flex flex-col justify-center items-center gap-5 shadow-2xl">
                 <div className="text-left space-y-2.5 w-full">
-                    <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight uppercase">Create account</h2>
+                    <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight uppercase">Create&nbsp;account</h2>
                     <p className="text-white/80 font-medium">Join our community of professional designers and architects.</p>
                 </div>
                 <Form className="flex w-full flex-col gap-6 justify-start" onSubmit={onSubmit}>
@@ -138,7 +138,7 @@ const SignUp = () => {
                     </div>
                 </Form>
                 <h4 className="text-white text-center font-bold">Or</h4>
-                <SocialLogin />
+                <SocialSignUp google="Sign Up with Google" github="Sign Up with GitHub" />
                 <div className="w-full flex gap-2 justify-center items-center mt-5">
                     <p className="text-white/80 text-sm font-medium">Already have an account?</p>
                     <Link href="/auth/signIn" className="text-white underline decoration-white/60 font-bold transition-all cursor-pointer">Sign In</Link>

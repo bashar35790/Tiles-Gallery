@@ -154,7 +154,7 @@ const Login = () => {
                 </form>
 
                 <h4 className="text-white text-center font-bold">Or</h4>
-                <SocialLogin />
+                <SocialLogin google="Sign in with Google" github="Sign in with GitHub" />
                 <div className="w-full flex gap-2 justify-center items-center mt-5">
                     <p className="text-white/80 text-sm font-medium">Don't have any account?</p>
                     <Link href="/auth/resister" className="text-white underline decoration-white/60 font-bold transition-all cursor-pointer">Sign up</Link>
