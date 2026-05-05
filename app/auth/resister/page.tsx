@@ -1,7 +1,9 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
+import SocialLogin from "@/utility/thirdPartyLogin/ThirdPartyLogin";
 import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 
@@ -67,7 +69,7 @@ const SignUp = () => {
                         <Input placeholder="Enter Your Name" className={`${inputStyles} rounded-xl bg-white/5 border-white/20 text-white placeholder:text-white/40 px-4 py-3`} />
                         <FieldError className="text-red-300 text-xs mt-1" />
                     </TextField>
-                    
+
                     <TextField
                         isRequired
                         name="email"
@@ -117,16 +119,16 @@ const SignUp = () => {
                     </TextField>
 
                     <div className="flex flex-col sm:flex-row gap-3 pt-4">
-                        <Button 
-                            type="submit" 
+                        <Button
+                            type="submit"
                             className="bg-brand-secoundry text-white py-4 rounded-xl font-bold uppercase tracking-widest flex-1 shadow-lg hover:shadow-xl transition-all active:scale-[0.98]"
                             isDisabled={loading}
                         >
                             {!loading && <Check className="w-5 h-5" />}
                             {loading ? "Creating Account..." : "Submit"}
                         </Button>
-                        <Button 
-                            type="reset" 
+                        <Button
+                            type="reset"
                             variant="secondary"
                             className="bg-white/10 text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-white/20 transition-all"
                             isDisabled={loading}
@@ -135,6 +137,12 @@ const SignUp = () => {
                         </Button>
                     </div>
                 </Form>
+                <h4 className="text-white text-center font-bold">Or</h4>
+                <SocialLogin />
+                <div className="w-full flex gap-2 justify-center items-center mt-5">
+                    <p className="text-white/80 text-sm font-medium">Already have an account?</p>
+                    <Link href="/auth/signIn" className="text-white underline decoration-white/60 font-bold transition-all cursor-pointer">Sign In</Link>
+                </div>
             </div>
         </div>
     );

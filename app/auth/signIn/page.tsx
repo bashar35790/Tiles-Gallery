@@ -13,6 +13,7 @@ import {
     Label,
     TextField,
 } from "@heroui/react";
+import Link from "next/link";
 
 const inputStyles =
     "border border-gray-300 focus-within:border-brand-secoundry focus-within:ring-1 focus-within:ring-brand-secoundry focus:outline-none w-full";
@@ -26,7 +27,7 @@ const Login = () => {
 
     useEffect(() => {
         if (session) {
-            router.push("/my-profile");
+            router.push("/");
         }
     }, [session, router]);
 
@@ -60,7 +61,7 @@ const Login = () => {
             }
 
             router.refresh();
-            router.push("/my-profile");
+            router.push("/");
         } catch {
             setErrorMsg("Something went wrong. Please try again.");
         } finally {
@@ -152,11 +153,15 @@ const Login = () => {
 
                 </form>
 
+                <h4 className="text-white text-center font-bold">Or</h4>
                 <SocialLogin />
+                <div className="w-full flex gap-2 justify-center items-center mt-5">
+                    <p className="text-white/80 text-sm font-medium">Don't have any account?</p>
+                    <Link href="/auth/resister" className="text-white underline decoration-white/60 font-bold transition-all cursor-pointer">Sign up</Link>
+                </div>
             </div>
         </div>
     );
 };
 
 export default Login;
-

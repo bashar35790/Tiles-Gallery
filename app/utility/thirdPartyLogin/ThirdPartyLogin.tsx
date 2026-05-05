@@ -23,7 +23,7 @@ export default function SocialLogin() {
     }
 
     return (
-        <div className="flex w-full max-w-xs flex-col gap-3">
+        <div className="flex w-full flex-col gap-3">
             <Button className="w-full" variant="tertiary" onClick={handleLogin}>
                 <Icon icon="devicon:google" />
                 Sign in with Google
